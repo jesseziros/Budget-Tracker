@@ -1,0 +1,21 @@
+{
+    "icons": [
+      {
+        "src": "assets/icons/icon_512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "assets/icons/icon_384x384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      }
+    ],
+    "name": "Budget App",
+    "short_name": "Budget",
+    "display": "standalone",
+    "start_url": "/",
+    "description": "An application that allows you to manage your budget on and offline.",
+    "background_color": "#01579b",
+    "theme_color": "#ffffff"
+}
