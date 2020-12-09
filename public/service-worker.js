@@ -18,6 +18,25 @@ self.addEventListener('install', (event) => {
   );
 });
 
+self.addEventListener('activate', (event) => {
+  const currentCaches = [PRECACHE, RUNTIME];
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return cacheNames.filter((cacheNames) => !currentCaches.includes(cacheNames));
+      })
+      .then((cachesToDelete) => {
+        return Promise.all(
+          cachesToDelete.map((cachesToDelete) => {
+            return caches.delete(cachesToDelete);
+          })
+        );
+      })
+      .then(() => self.clients.claim())
+  );
+});
+
 self.addEventListener('fetch', (event) => {
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
