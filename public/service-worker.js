@@ -2,8 +2,7 @@ const FILES_TO_CACHE = [
   '/',
   '/index.html',
   '/index.js',
-  '/style.css',
-  '../models/transaction.js',
+  '/styles.css',
   'https://fonts.googleapis.com/css?family=Istok+Web|Montserrat:800&display=swap'
 ];
 
