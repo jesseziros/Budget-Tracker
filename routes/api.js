@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { connection } = require("mongoose");
 const Transaction = require("../models/transaction.js");
 
 router.post("/api/transaction", ({body}, res) => {

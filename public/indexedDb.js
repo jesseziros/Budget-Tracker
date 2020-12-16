@@ -35,7 +35,7 @@ const checkDatabase = () => {
     if(getAll.result.length > 0) {
       fetch("/api/transaction/bulk", {
         method: "POST",
-        body: JSON.stringify(getAlll.result),
+        body: JSON.stringify(getAll.result),
         headers: {
           Accept: "application/json, text/plan. */*",
           "Content-Typs": "application/json"
