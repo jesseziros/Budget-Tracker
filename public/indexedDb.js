@@ -16,17 +16,39 @@ request.onsuccess = (event) => {
   db = event.target.result;
 
   if(navigator.onLine) {
-    addToDatabase();
+    checkDatabase();
   }
 };
 
-//   if (method === "put") {
-//     store.put(object);
-//   } else if (method === "get") {
-//     const all = store.getAll();
-//     all.onsuccess = () => resolve(all.result);
-//   } else if (method === "delete") {
-//     store.delete(object._id);
-//   }
-//   tx.complete = () => db.close();
-// };
+const saveRecord = (record) => {
+  const tx = db.transaction(['pending'], 'readwrite');
+  const store = tx.objectStore('pending');
+  store.add(record);
+}
+
+const checkDatabase = () => {
+  const tx = db.transaction(['pending'], "readwrite");
+  const store = tx.objectStore('pending');
+  const getAll = store.getAll();
+
+  getAll.onsuccess = () => {
+    if(getAll.result.length > 0) {
+      fetch("/api/transaction/bulk", {
+        method: "POST",
+        body: JSON.stringify(getAlll.result),
+        headers: {
+          Accept: "application/json, text/plan. */*",
+          "Content-Typs": "application/json"
+        }
+      })
+      .then(response => response.json())
+      .then(() => {
+        const tx = db.transaction(['pending'], 'readwrite');
+        const store = tx.objectStore('pending');
+        store.clear();
+      })
+    }
+  }
+}
+
+window.addEventListener("online", checkDatabase);
