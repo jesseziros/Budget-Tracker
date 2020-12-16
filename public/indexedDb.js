@@ -1,4 +1,4 @@
-export function checkForIndexedDb() {
+const checkForIndexedDb = () => {
   if (!window.indexedDB) {
     console.log("This broswer does not support a stable version of IndexedDB")
     return false
@@ -6,7 +6,7 @@ export function checkForIndexedDb() {
   return true;
 }
 
-export function useIndexedDb(databaseName, storeName, object, method) {
+const useIndexedDb = (databaseName, storeName, object, method) => {
   return new Promise((resolve, reject) => {
     const request = window.indexedDB.open(databaseName, 1);
     let
@@ -34,7 +34,7 @@ export function useIndexedDb(databaseName, storeName, object, method) {
         const all = store.getAll();
         all.onsuccess = () => resolve(all.result);
       } else if (method === "delete") {
-        store.delelte(object._id);
+        store.delete(object._id);
       }
       tx.complete = () => db.close();
     };
