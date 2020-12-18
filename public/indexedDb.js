@@ -1,5 +1,7 @@
 let db;
 
+const indexedDB = window.indexedDB
+
 const request = indexedDB.open('budget-transaction', 1)
 
 request.onupgradeneeded = (event) => {
@@ -12,7 +14,6 @@ request.onerror = (event) => {
 };
 
 request.onsuccess = (event) => {
-  console.log(event.target.result)
   db = event.target.result;
 
   if(navigator.onLine) {
@@ -37,8 +38,8 @@ const checkDatabase = () => {
         method: "POST",
         body: JSON.stringify(getAll.result),
         headers: {
-          Accept: "application/json, text/plan. */*",
-          "Content-Typs": "application/json"
+          Accept: "application/json, text/plan, */*",
+          "Content-Type": "application/json"
         }
       })
       .then(response => response.json())
