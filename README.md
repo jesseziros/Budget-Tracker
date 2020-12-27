@@ -22,7 +22,7 @@
   ## Usage
   There is 2 input fields, one for the name of the transaction and one for the cost. You will fill out both of them and select either add or subtract and it will save the information on a graph that tracks your budget.
 
-  ![Screenshot](https://young-tundra-96050.herokuapp.com/)
+  ![Screenshot](image/screenshot.png)
 
   ## Questions
   If you have any questions contact me at:
